@@ -2,10 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+<meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+
   <title>Hole.io Clone - Absorb Everything!</title>
 
   <style>
@@ -13,14 +18,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    @font-face {
-      font-family: "Orbitron";
-      font-style: normal;
-      font-weight: 700;
-      font-display: swap;
-      src: url("https://fonts.gstatic.com/s/orbitron/v31/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy6xpmIyXjU1pg.woff2") format("woff2");
     }
 
     body {
@@ -106,7 +103,7 @@
       z-index: 100;
     }
   </style>
-  <script type="module" crossorigin src="./assets/index-CsuiWho9.js"></script>
+  <script type="module" crossorigin src="./assets/index-BkfIiqlR.js"></script>
 </head>
 
 <body>
@@ -114,15 +111,14 @@
     <div class="loader"></div>
     <div>LOADING...</div>
   </div>
-
-  <div id="game-container"></div>
+<div id="game-container"></div>
 
 
   <script>
     // Hide loading screen when Phaser is ready
     window.addEventListener("load", () => {
       setTimeout(() => {
-        const loading = document.getElementById("loading");
+const loading = document.getElementById("loading");
         if (loading) loading.classList.add("hidden");
       }, 500);
     });
