@@ -1,0 +1,8 @@
+name = "pages"
+compatibility_date = "2026-02-11"
+
+[build]
+command = "./build.sh"
+
+[assets]
+directory = "./public"
