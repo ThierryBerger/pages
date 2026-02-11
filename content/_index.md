@@ -31,7 +31,7 @@ url = "https://github.com/sponsors/Vrixyz"
 
 [[extra.list]]
 title = "Unity"
-content = 'Professional mobile gamedev using Unity'
+content = 'Background in mobile gamedev using Unity'
 url = "https://github.com/sponsors/Vrixyz"
 
 [[extra.list]]
