@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>Hole</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      touch-action: none;
+      background: #1a1a2e
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%
+    }
+
+    #score {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font: bold 32px/1 system-ui, sans-serif;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    #timer {
+      position: fixed;
+      top: 54px;
+      left: 50%;
+      transform: translateX(-50%);
+      font: 600 18px/1 system-ui, sans-serif;
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    #game-over {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 10, 20, 0.75);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    #game-over.visible {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    #game-over .final-score {
+      font: bold 56px/1 system-ui, sans-serif;
+      color: #fff;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+      margin-bottom: 8px;
+    }
+
+    #game-over .label {
+      font: 500 16px/1 system-ui, sans-serif;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 36px;
+    }
+
+    #game-over button {
+      display: block;
+      width: 220px;
+      padding: 14px 0;
+      margin: 6px 0;
+      border: none;
+      border-radius: 12px;
+      font: 600 17px/1 system-ui, sans-serif;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    #game-over button:active {
+      transform: scale(0.95)
+    }
+
+    #btn-restart {
+      background: #fff;
+      color: #1a1a2e
+    }
+
+    #btn-continue {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important
+    }
+
+    #btn-continue.hidden {
+      display: none
+    }
+  </style>
+  <script type="module" crossorigin src="./assets/index-BYfMAVkE.js"></script>
+</head>
+
+<body>
+  <div id="score">0</div>
+  <div id="timer">30</div>
+  <div id="game-over">
+    <div class="final-score" id="final-score">0</div>
+    <div class="label">score</div>
+    <button id="btn-restart">Play Again</button>
+    <button id="btn-continue">Continue +60s</button>
+  </div>
+</body>
+
+</html>
