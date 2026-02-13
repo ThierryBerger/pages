@@ -57,6 +57,28 @@ Handcrafted browser games — no downloads, no installs. Just click and play.
 
 ---
 
+<div class="card mb-4" style="overflow: hidden; border: 1px solid rgba(100, 181, 246, 0.2); border-radius: 12px;">
+  <a href="/games/trainText/index.html" style="display: block;">
+    <img src="/images/trainText-hero.svg" alt="TrainText — Spell Your Way Forward" style="width: 100%; height: auto; display: block;" />
+  </a>
+  <div class="card-body" style="padding: 1.5rem;">
+    <h2 style="margin-top: 0;">TrainText</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+      A <strong>word-powered locomotive adventure</strong>. Collect scattered letter blocks to spell words, keep the train rolling, and clear the track before time runs out.
+    </p>
+    <ul style="margin-bottom: 1.5rem;">
+      <li>Works on desktop and mobile — touch and mouse controls</li>
+      <li>Pick-up-and-play — no account needed</li>
+      <li>Built with ThreeJS</li>
+    </ul>
+    <a href="/games/trainText/index.html" class="btn btn-primary" style="background: linear-gradient(135deg, #2e5a3e, #388e3c); border: none; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 600;">
+      Play TrainText
+    </a>
+  </div>
+</div>
+
+---
+
 <p style="text-align: center; color: #6c757d; margin-top: 2rem; font-style: italic;">
 More games coming soon — stay tuned.
 </p>
