@@ -1,0 +1,19 @@
+{% extends "section.html" %}
+
+{% block seo %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ get_url(path='games.css') | safe }}">
+{% endblock seo %}
+
+{% block content %}
+<div class="wrap container-fluid" role="document" style="max-width: 1400px;">
+  <div class="content">
+    <article>
+      <div class="page-header text-center">
+        <h1>{{ section.title }}</h1>
+      </div>
+      {{ section.content | safe }}
+    </article>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,85 @@
+/* Game cards grid */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.game-card {
+    overflow: hidden;
+    border: 1px solid rgba(138, 43, 226, 0.15);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    background: rgba(138, 43, 226, 0.03);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(138, 43, 226, 0.15);
+    }
+}
+
+.game-card .game-card-img-link {
+    display: block;
+    cursor: pointer;
+}
+
+.game-card .game-card-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.game-card .card-body {
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.game-card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+
+.game-card .game-card-desc {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+
+.game-card .game-card-features {
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.btn-game {
+    margin-top: auto;
+    align-self: flex-start;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, #74619f, #8a2be2);
+
+    &.btn-game-green {
+        background: linear-gradient(135deg, #2e5a3e, #388e3c);
+    }
+}
+
+.games-subtitle {
+    font-size: 1.25rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.games-footer {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #6c757d;
+    margin-top: 0.75rem;
+    font-style: italic;
+}
