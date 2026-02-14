@@ -35,7 +35,7 @@ Handcrafted browser games — no downloads, no installs. Just click and play.
 </div>
 
 <div class="card game-card">
-  <a href="/games/hole2d/" class="game-card-img-link">
+  <a href="/games/hole3d/" class="game-card-img-link">
     <img src="/images/hole3d-hero.svg" alt="Hole3D — Absorb Everything, AGAIN!" class="game-card-img" />
   </a>
   <div class="card-body">
@@ -70,6 +70,27 @@ Handcrafted browser games — no downloads, no installs. Just click and play.
     </ul>
     <a href="/games/trainText/index.html" class="btn btn-primary btn-game btn-game-green">
       Play TrainText
+    </a>
+  </div>
+</div>
+
+
+<div class="card game-card">
+  <a href="/games/ticTac/index.html" class="game-card-img-link">
+    <img src="/images/ticTac-hero.svg" alt="Tic Tac Toe — Lightweight multiplayer (soon)" class="game-card-img" />
+  </a>
+  <div class="card-body">
+    <h2>Tic Tac Toe</h2>
+    <p class="game-card-desc">
+      The classic strategy showdown, right in your browser. Take turns, line up three, and outsmart your opponent.
+    </p>
+    <ul class="game-card-features">
+      <li>Play against AI</li>
+      <li>Clean, minimal interface</li>
+      <li>Online multiplayer coming soon</li>
+    </ul>
+    <a href="/games/ticTac/index.html" class="btn btn-primary btn-game btn-game-green">
+      Play Tic Tac Toe
     </a>
   </div>
 </div>
