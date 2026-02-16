@@ -95,6 +95,25 @@ Handcrafted browser games — no downloads, no installs. Just click and play.
   </div>
 </div>
 
+<div class="card game-card">
+  <a href="/games/sheriff/index.html" class="game-card-img-link">
+    <img src="/images/sheriff-hero.svg" alt="Don't shoot the sheriff" class="game-card-img" />
+  </a>
+  <div class="card-body">
+    <h2>Don't shoot the sheriff</h2>
+    <p class="game-card-desc">
+      A tense whack-a-bandit, but don't shoot the sheriff!
+    </p>
+    <ul class="game-card-features">
+      <li>Exclusive art by <a href="https://www.instagram.com/francoisguibet">@francoisguibet</a></li>
+      <li>Clean, minimal interface</li>
+      <li>More cards coming soon</li>
+    </ul>
+    <a href="/games/sheriff/index.html" class="btn btn-primary btn-game btn-game-golden">
+      Play 'Don't shoot the sheriff'
+    </a>
+  </div>
+</div>
 <p class="games-footer">
 More games coming soon — stay tuned.
 </p>
