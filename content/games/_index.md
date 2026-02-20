@@ -55,21 +55,21 @@ Handcrafted browser games — no downloads, no installs. Just click and play.
 </div>
 
 <div class="card game-card">
-  <a href="/games/trainText/index.html" class="game-card-img-link">
-    <img src="/images/trainText-hero.svg" alt="TrainText — Spell Your Way Forward" class="game-card-img" />
+  <a href="/games/raceText/index.html" class="game-card-img-link">
+    <img src="/images/raceText-hero.svg" alt="RaceText — Spell Your Way Forward" class="game-card-img" />
   </a>
   <div class="card-body">
-    <h2>TrainText</h2>
+    <h2>RaceText</h2>
     <p class="game-card-desc">
-      A <strong>word-powered locomotive adventure</strong>. Spell a word, keep the train rolling, and reach the end!
+      A <strong>word-powered cute adventure</strong>. Spell a word, keep running, and reach the end!
     </p>
     <ul class="game-card-features">
       <li>Works on desktop and mobile — touch and mouse controls</li>
       <li>Pick-up-and-play — no account needed</li>
       <li>Built with Cocos Creator</li>
     </ul>
-    <a href="/games/trainText/index.html" class="btn btn-primary btn-game btn-game-green">
-      Play TrainText
+    <a href="/games/raceText/index.html" class="btn btn-primary btn-game btn-game-green">
+      Play raceText
     </a>
   </div>
 </div>
