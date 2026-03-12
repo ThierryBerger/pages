@@ -26,6 +26,8 @@ def generate(
     title_y_start: int = 85,
     title_line_spacing: int = 45,
     tagline_y_offset: int = 35,
+    tagline_font_size: int = 17,
+    tagline_font_weight: int = 800,
 ):
     src = STATIC / source_image
     if not src.exists():
@@ -96,7 +98,8 @@ def generate(
       </feMerge>
     </filter>
     <filter id="textShadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.8"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#000" flood-opacity="1.0"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.6"/>
     </filter>
   </defs>
 
@@ -107,7 +110,7 @@ def generate(
   <rect y="200" width="800" height="200" fill="url(#bottomFade)"/>
 
 {title_elements}
-  <text x="400" y="{tagline_y}" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-weight="600" font-size="15" fill="{accent_color}" letter-spacing="7" filter="url(#textShadow)">{tagline}</text>
+  <text x="400" y="{tagline_y}" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-weight="{tagline_font_weight}" font-size="{tagline_font_size}" fill="{accent_color}" letter-spacing="6" filter="url(#textShadow)">{tagline}</text>
 
   <rect x="335" y="342" width="130" height="40" rx="20" fill="rgba(255,255,255,0.12)" stroke="{accent_color}" stroke-width="2" filter="url(#btnGlow)"/>
   <text x="400" y="368" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#ffffff" font-weight="700" letter-spacing="2">PLAY NOW</text>
@@ -155,6 +158,14 @@ CONFIGS = {
         title_font_size=42,
         title_y_start=80,
         title_line_spacing=40,
+    ),
+    "syllabe": dict(
+        source_image="syllabe-hero.png",
+        output_svg="syllabe-hero.svg",
+        title_lines=["SYLLABE"],
+        tagline="LEARN WORDS, ONE TAP AT A TIME",
+        accent_color="#4DCFF0",
+        overlay_color="#091e2a",
     ),
 }
 

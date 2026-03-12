@@ -31,7 +31,8 @@
       </feMerge>
     </filter>
     <filter id="textShadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.8"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#000" flood-opacity="1.0"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.6"/>
     </filter>
   </defs>
 
@@ -41,9 +42,9 @@
   <rect width="800" height="200" fill="url(#topFade)"/>
   <rect y="200" width="800" height="200" fill="url(#bottomFade)"/>
 
-  <text x="400" y="80" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="42" fill="#ffffff" filter="url(#titleGlow)" letter-spacing="2">DON'T SHOOT</text>
-  <text x="400" y="120" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="42" fill="#ffffff" filter="url(#titleGlow)" letter-spacing="2">THE SHERIFF</text>
-  <text x="400" y="155" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-weight="600" font-size="14" fill="#d4a843" letter-spacing="7" filter="url(#textShadow)">DRAW FAST, SPARE THE LAW</text>
+  <text x="400" y="60" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="42" fill="#ffffff" filter="url(#titleGlow)" letter-spacing="3">DON'T SHOOT</text>
+  <text x="400" y="100" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="42" fill="#ffffff" filter="url(#titleGlow)" letter-spacing="3">THE SHERIFF</text>
+  <text x="400" y="135" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="17" fill="#d4a843" letter-spacing="6" filter="url(#textShadow)">DRAW FAST, SPARE THE LAW</text>
 
   <rect x="335" y="342" width="130" height="40" rx="20" fill="rgba(255,255,255,0.12)" stroke="#d4a843" stroke-width="2" filter="url(#btnGlow)"/>
   <text x="400" y="368" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#ffffff" font-weight="700" letter-spacing="2">PLAY NOW</text>

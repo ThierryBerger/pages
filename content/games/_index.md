@@ -114,6 +114,25 @@ Handcrafted browser games — no downloads, no installs. Just click and play.
     </a>
   </div>
 </div>
+<div class="card game-card">
+  <a href="/games/syllabe/index.html" class="game-card-img-link">
+    <img src="/images/syllabe-hero.svg" alt="Syllabe — Learn Words, One Tap at a Time" class="game-card-img" />
+  </a>
+  <div class="card-body">
+    <h2>Syllabe</h2>
+    <p class="game-card-desc">
+      A <strong>vocabulary game for young children</strong>. A word appears on screen — tap the matching image. Pressure-free, instant feedback, pure exploration.
+    </p>
+    <ul class="game-card-features">
+      <li>Designed for ages 3–7</li>
+      <li>Learn syllabi while having fun!</li>
+    </ul>
+    <a href="/games/syllabe/index.html" class="btn btn-primary btn-game btn-game-cyan">
+      Play Syllabe
+    </a>
+  </div>
+</div>
+
 <p class="games-footer">
 More games coming soon — stay tuned.
 </p>
