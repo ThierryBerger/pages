@@ -29,6 +29,12 @@ section = "games"
 url = "/games/"
 weight = 22
 
+[[extra.menu.main]]
+name = "Research"
+section = "research"
+url = "/research/"
+weight = 23
+
 
 [[extra.list]]
 title = "Bevy 🚀"
