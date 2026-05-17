@@ -1,8 +1,9 @@
 # Cloudflare Pages custom response headers.
 # https://developers.cloudflare.com/pages/configuration/headers/
 
-# Marimo WASM apps load Pyodide (Python runtime) dynamically from jsDelivr CDN.
-# The default CSP blocks external module loading and blob: workers, breaking Pyodide.
-# connect-src also needs PyPI (files.pythonhosted.org) for micropip package installs.
+# Marimo WASM apps need several external origins:
+#   cdn.jsdelivr.net   — Pyodide runtime + packages
+#   wasm.marimo.app    — marimo's own CDN (pyodide-lock.json, wasm assets)
+#   files.pythonhosted.org / pypi.org — micropip package installs
 /research/company/*
-  Content-Security-Policy: default-src 'self' cdn.jsdelivr.net; script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.jsdelivr.net blob:; worker-src blob: 'self'; connect-src 'self' cdn.jsdelivr.net files.pythonhosted.org pypi.org; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:
+  Content-Security-Policy: default-src 'self' cdn.jsdelivr.net wasm.marimo.app; script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.jsdelivr.net wasm.marimo.app blob:; worker-src blob: 'self'; connect-src 'self' cdn.jsdelivr.net wasm.marimo.app files.pythonhosted.org pypi.org; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:
