@@ -4,7 +4,6 @@ Thierry Berger's personal site — Zola static site deployed on Cloudflare Pages
 
 ## Stack
 - **Zola** (theme: `adidoks`) — `zola serve` to develop locally
-  - marimo won't work locally because of COOP/COEP headers..
 - **Cloudflare Pages** — build command: `bash build.sh`
 - **Jujutsu** (colocated with git) — use `jj` to commit, not `git commit`
 
