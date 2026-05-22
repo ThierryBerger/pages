@@ -30,10 +30,16 @@ url = "/games/"
 weight = 22
 
 [[extra.menu.main]]
+name = "Playables"
+section = "playables"
+url = "/playables/"
+weight = 23
+
+[[extra.menu.main]]
 name = "Research"
 section = "research"
 url = "/research/"
-weight = 23
+weight = 24
 
 
 [[extra.list]]
