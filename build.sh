@@ -7,7 +7,7 @@ git submodule update --init --recursive || true
 [ -f "external/company/build.py" ] || \
   git clone https://github.com/ThierryBerger/company.git external/company
 
-pip install marimo
+pip install marimo uv
 
 (cd external/company && python build.py)
 
