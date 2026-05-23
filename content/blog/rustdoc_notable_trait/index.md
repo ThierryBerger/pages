@@ -4,7 +4,7 @@ description = "Javascript in our docs?"
 date = 2026-05-23T19:33:19+00:00
 updated = 2026-05-23T19:33:19+00:00
 draft = false
-template = "drafts/page.html"
+template = "blog/page.html"
 
 [extra]
 lead = "Let's explore what Bevy has been doing to guide their users to the correct concepts, and how Rustdoc (or you?) can help."

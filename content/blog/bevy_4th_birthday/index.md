@@ -4,7 +4,7 @@ description = "Fourth year of bevy."
 date = 2024-08-13T09:19:42+00:00
 updated = 2024-08-13T09:19:42+00:00
 draft = false
-template = "drafts/page.html"
+template = "blog/page.html"
 
 [extra]
 lead = "Happy Bevybirthday!"
