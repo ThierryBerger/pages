@@ -38,6 +38,7 @@ Bevy has been experimenting with augmenting rustdoc output to surface these conc
   - In hindsight, it's probably a bad idea to assume user is not interested in details, so I suggest to let this go.
   - See: <https://github.com/bevyengine/bevy/pull/24222>.
 - **Trait sections**: module pages group items by trait role instead of one flat list. See <https://github.com/bevyengine/bevy/pull/17821>.
+  - But then, if a type implements multiple "tags", where do we put it ?
 
 
 ## How it's implemented
