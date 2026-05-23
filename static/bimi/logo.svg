@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Thierry Berger</title>
+  <rect width="64" height="64" fill="#000000"/>
+  <path fill="#FFFFFF" d="M4 4h40v8h-40zM20 12h8v48h-8zM32 16h24v8h-24zM56 20h4v12h-4zM32 24h8v36h-8zM48 24h8v12h-8zM40 32h8v12h-8zM48 36h4v24h-4zM52 40h4v20h-4zM56 44h4v12h-4zM40 52h8v8h-8z"/>
+  <path fill="#F74C00" d="M48 4h12v8h-12zM4 16h12v44h-12z"/>
+</svg>

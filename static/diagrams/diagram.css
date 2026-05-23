@@ -1,0 +1,100 @@
+/* Shared styling for the Rust-rendered diagrams.
+   Colours come from the validated three-slot categorical palette; identity in
+   every diagram is carried by direct labels, so colour is free to encode a
+   real distinction (memory model, lane, function). Status red is fixed in both
+   themes by the palette rule and never themed. */
+.diagram {
+  --la-manual:  #1baf7a;
+  --la-managed: #2a78d6;
+  --la-subject: #eb6834;
+  --la-ink:     #0b0b0b;
+  --la-ink-2:   #52514e;
+  --la-muted:   #898781;
+  --la-grid:    #e1e0d9;
+  --la-axis:    #c3c2b7;
+  --la-surface: #ffffff;
+
+  --dg-a:       #2a78d6;
+  --dg-b:       #1baf7a;
+  --dg-accent:  #eb6834;
+  --dg-alert:   #d03b3b;
+  --dg-ink:     #0b0b0b;
+  --dg-ink-2:   #52514e;
+  --dg-muted:   #898781;
+  --dg-grid:    #e1e0d9;
+  --dg-axis:    #c3c2b7;
+  --dg-surface: #ffffff;
+
+  /* Diagrams are wider than prose. Break out of the text column rather than
+     squeezing a fixed grid into it — otherwise the labels shrink below
+     readable size on an ordinary desktop. */
+  width: min(96vw, 980px);
+  margin: 2.5rem 0 2.5rem 50%;
+  transform: translateX(-50%);
+}
+
+/* The theme toggles dark mode with a body class, so key off the same signal
+   rather than prefers-color-scheme, which could disagree with the page.
+   Grid and axis steps are lifted from the reference palette's values, which
+   assume a #1a1a19 surface; against this theme's #212529 they vanish. */
+body.dark .diagram {
+  --la-manual:  #199e70;
+  --la-managed: #3987e5;
+  --la-subject: #d95926;
+  --la-ink:     #ffffff;
+  --la-ink-2:   #c3c2b7;
+  --la-grid:    #2f353a;
+  --la-axis:    #464d53;
+  --la-surface: #212529;
+
+  --dg-a:       #3987e5;
+  --dg-b:       #199e70;
+  --dg-accent:  #d95926;
+  --dg-ink:     #ffffff;
+  --dg-ink-2:   #c3c2b7;
+  --dg-grid:    #2f353a;
+  --dg-axis:    #464d53;
+  --dg-surface: #212529;
+}
+
+/* Timeline diagrams are drawn on a fixed grid; on a narrow screen they scroll
+   sideways at a readable size rather than shrinking into illegibility. */
+.diagram__scroll { overflow-x: auto; }
+.diagram__stage { line-height: 0; user-select: none; }
+.diagram[data-diagram="concurrency"] .diagram__stage,
+.diagram[data-diagram="async"] .diagram__stage { min-width: 660px; }
+.diagram__stage svg { display: block; width: 100%; height: auto; overflow: visible; }
+.diagram__stage.is-draggable { cursor: grab; touch-action: pan-y; }
+.diagram__stage.is-dragging { cursor: grabbing; }
+
+.diagram__controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem;
+  margin-top: 0.6rem;
+}
+.diagram__steps { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.diagram__steps button,
+.diagram__again,
+.diagram__reset {
+  font: inherit; font-size: 0.8rem; padding: 0.25rem 0.6rem;
+  border: 1px solid var(--dg-axis); border-radius: 999px;
+  background: transparent; color: var(--dg-ink-2); cursor: pointer;
+}
+.diagram__steps button[aria-pressed="true"] {
+  border-color: var(--dg-accent); color: var(--dg-accent); font-weight: 600;
+}
+.diagram__again { border-color: var(--dg-accent); color: var(--dg-accent); }
+.diagram__steps button:focus-visible,
+.diagram__again:focus-visible,
+.diagram__reset:focus-visible { outline: 2px solid var(--dg-accent); outline-offset: 2px; }
+.diagram__slider { display: flex; align-items: center; gap: 0.5rem; flex: 1 1 11rem; }
+.diagram__slider span { font-size: 0.8rem; color: var(--dg-muted); }
+.diagram__slider input { flex: 1; accent-color: var(--dg-accent); }
+.diagram__hint { font-size: 0.85rem; color: var(--dg-muted); margin-top: 0.6rem; }
+
+.diagram__data { margin-top: 1rem; font-size: 0.88rem; }
+.diagram__data summary { cursor: pointer; color: var(--dg-ink-2); }
+.la-table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.82rem; }
+.la-table caption { text-align: left; color: var(--dg-muted); padding-bottom: 0.5rem; font-size: 0.8rem; }
+.la-table th, .la-table td { border-bottom: 1px solid var(--dg-grid); padding: 0.35rem 0.5rem; text-align: left; }
+.la-table td:nth-child(-n+4):not(:first-child) { font-variant-numeric: tabular-nums; }
+.la-table thead th { color: var(--dg-ink-2); font-weight: 600; }

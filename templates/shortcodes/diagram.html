@@ -1,0 +1,177 @@
+{# One shortcode for every diagram: {{ diagram(name="concurrency") }}
+   The static SVG is rendered at build time by diagrams/svg from the same Rust
+   core as the wasm module, so it is a real fallback rather than a placeholder:
+   no-JS readers and feed readers get the finished picture. #}
+{%- if name == "lang-axes" -%}
+  {%- set steps = ["1 axis", "2 axes", "3 axes"] -%}
+  {%- set hint = "Drag the diagram to rotate it. Every score is a judgement against a written rubric — the numbers are in the table below, and disagreeing with them is the point." -%}
+{%- elif name == "concurrency" -%}
+  {%- set steps = ["one line", "two lines", "both busy", "instructions", "order"] -%}
+  {%- set hint = "Run it again to re-schedule the same program. Nothing about the code changed." -%}
+{%- else -%}
+  {%- set steps = ["calls", "units", "description", "runtime", "interleaved", "futures", "poll"] -%}
+  {%- set hint = "Each step is one thing the compiler or the runtime does to get from two plain calls to a polled state machine." -%}
+{%- endif -%}
+<link rel="stylesheet" href="{{ get_url(path='diagrams/diagram.css') }}">
+<figure class="diagram" id="dg-{{ name }}" data-diagram="{{ name }}" data-max="{{ steps | length - 1 }}">
+  <div class="diagram__scroll">
+    <div class="diagram__stage" id="dg-{{ name }}-stage">
+      {{ load_data(path="static/diagrams/" ~ name ~ "/fallback.svg", format="plain") | safe }}
+    </div>
+  </div>
+
+  <div class="diagram__controls" hidden>
+    <div class="diagram__steps" role="group" aria-label="Jump to a step">
+      {%- for s in steps %}
+      <button type="button" data-t="{{ loop.index0 }}">{{ s }}</button>
+      {%- endfor %}
+    </div>
+    <label class="diagram__slider">
+      <span>Reveal</span>
+      <input type="range" min="0" max="{{ steps | length - 1 }}" step="0.01"
+             value="{{ steps | length - 1 }}"
+             aria-label="Reveal the diagram step by step">
+    </label>
+    {%- if name == "concurrency" %}
+    <button type="button" class="diagram__again">Run again</button>
+    {%- endif %}
+    {%- if name == "lang-axes" %}
+    <button type="button" class="diagram__reset" hidden>Reset view</button>
+    {%- endif %}
+  </div>
+
+  <figcaption class="diagram__hint" hidden>{{ hint }}</figcaption>
+
+  {%- if name == "lang-axes" %}
+  <details class="diagram__data">
+    <summary>Scores and reasoning</summary>
+    {{ load_data(path="static/diagrams/lang-axes/table.html", format="plain") | safe }}
+  </details>
+  {%- endif %}
+</figure>
+
+<script type="module">
+import init, { render_lang_axes, render_concurrency, render_async }
+  from "{{ get_url(path='diagrams/diagrams_wasm.js') }}";
+
+// One wasm instance per page, however many diagrams are on it.
+window.__diagrams ??= init();
+
+const root  = document.getElementById("dg-{{ name }}");
+const name  = root.dataset.diagram;
+const maxT  = Number(root.dataset.max);
+const stage = root.querySelector(".diagram__stage");
+const ctrls = root.querySelector(".diagram__controls");
+const hint  = root.querySelector(".diagram__hint");
+const slider = root.querySelector("input[type=range]");
+const again = root.querySelector(".diagram__again");
+const reset = root.querySelector(".diagram__reset");
+
+let t = maxT, run = 0, yaw = 0, pitch = 0, ready = false;
+const YAW_LIMIT = 1.15, PITCH_MIN = -0.45, PITCH_MAX = 0.75;
+const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+
+// lang-axes lays itself out to fit any box, so it gets the real container size.
+// The timeline diagrams are drawn on a fixed grid, so they keep their own
+// coordinates and the scroll container handles narrow screens.
+function size() {
+  if (name === "lang-axes") {
+    const w = Math.max(360, Math.min(980, root.clientWidth || 720));
+    return [w, Math.round(w < 520 ? w * 1.15 : w * 0.805)];
+  }
+  return name === "concurrency" ? [720, 430] : [720, 600];
+}
+
+function paint() {
+  const [w, h] = size();
+  if (name === "lang-axes") return render_lang_axes(t, yaw, pitch, w, h);
+  if (name === "concurrency") return render_concurrency(t, run, w, h);
+  return render_async(t, w, h);
+}
+
+let queued = false;
+function draw() {
+  if (!ready || queued) return;
+  queued = true;
+  requestAnimationFrame(() => { queued = false; stage.innerHTML = paint(); });
+}
+
+function setT(next, fromSlider) {
+  t = Math.max(0, Math.min(maxT, next));
+  if (!fromSlider) slider.value = String(t);
+  for (const b of root.querySelectorAll(".diagram__steps button")) {
+    b.setAttribute("aria-pressed", String(Math.abs(t - Number(b.dataset.t)) < 0.02));
+  }
+  draw();
+}
+
+// Steps ease rather than cut: the motion between them is the explanation.
+function tween(ms, apply) {
+  if (reduced.matches) return apply(1);
+  const start = performance.now();
+  (function step(now) {
+    const k = Math.min(1, (now - start) / ms);
+    apply(k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
+    if (k < 1) requestAnimationFrame(step);
+  })(start);
+}
+
+slider.addEventListener("input", () => setT(Number(slider.value), true));
+for (const b of root.querySelectorAll(".diagram__steps button")) {
+  b.addEventListener("click", () => {
+    const from = t, to = Number(b.dataset.t);
+    tween(700, (e) => setT(from + (to - from) * e));
+  });
+}
+
+if (again) {
+  again.addEventListener("click", () => {
+    // Re-running only means anything once the shared ruler is on screen.
+    const fromT = t, toT = maxT, fromR = run, toR = run + 1;
+    tween(800, (e) => { run = fromR + (toR - fromR) * e; setT(fromT + (toT - fromT) * e); });
+  });
+}
+if (reset) {
+  reset.addEventListener("click", () => { yaw = 0; pitch = 0; reset.hidden = true; draw(); });
+}
+
+if (name === "lang-axes") {
+  let dragging = false, lastX = 0, lastY = 0;
+  stage.addEventListener("pointerdown", (e) => {
+    if (!ready) return;
+    dragging = true; lastX = e.clientX; lastY = e.clientY;
+    stage.classList.add("is-dragging");
+    stage.setPointerCapture(e.pointerId);
+  });
+  stage.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX, dy = e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    yaw = Math.max(-YAW_LIMIT, Math.min(YAW_LIMIT, yaw + dx * 0.006));
+    pitch = Math.max(PITCH_MIN, Math.min(PITCH_MAX, pitch - dy * 0.005));
+    reset.hidden = false;
+    draw();
+  });
+  for (const ev of ["pointerup", "pointercancel"]) {
+    stage.addEventListener(ev, () => { dragging = false; stage.classList.remove("is-dragging"); });
+  }
+  let rt;
+  addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(draw, 120); });
+}
+
+// Nothing is fetched until the diagram is near the viewport.
+new IntersectionObserver((entries, obs) => {
+  if (!entries.some((e) => e.isIntersecting)) return;
+  obs.disconnect();
+  window.__diagrams.then(() => {
+    ready = true;
+    ctrls.hidden = false;
+    hint.hidden = false;
+    if (name === "lang-axes") stage.classList.add("is-draggable");
+    setT(maxT);
+  }).catch((err) => {
+    // Keep the build-time SVG on screen; it is the same picture.
+    console.warn("diagram: interactive build unavailable, keeping static frame", err);
+  });
+}, { rootMargin: "300px" }).observe(root);
+</script>

@@ -62,7 +62,7 @@ I'll detail my understanding on how rustdoc works, but the following may be inco
 
 #### Gotta have that data
 
-*If* we choose to hook on to the notable trait API, we already have that info :tada: !
+*If* we choose to hook on to the notable trait API, we already have that info 🎉 !
 
 #### Gotta display that data
 

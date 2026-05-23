@@ -1,0 +1,14 @@
+<table class="la-table">
+<caption>Scores behind the diagram. These are judgements against a written rubric, not measurements.</caption>
+<thead><tr><th scope="col">Language</th><th scope="col">Control</th><th scope="col">Safety</th><th scope="col">Cost to wield</th><th scope="col">Memory</th><th scope="col">Why</th></tr></thead>
+<tbody>
+<tr><th scope="row">C</th><td>0.95</td><td>0.10</td><td>0.35</td><td>manual</td><td>Total control, no guarantees, and UB that invalidates reasoning about the whole program.</td></tr>
+<tr><th scope="row">C++</th><td>0.95</td><td>0.25</td><td>0.75</td><td>manual</td><td>RAII and smart pointers are real gains, but nothing is enforced; the surface area is enormous.</td></tr>
+<tr><th scope="row">Zig</th><td>0.95</td><td>0.40</td><td>0.45</td><td>manual</td><td>Runtime safety checks and explicit allocators, but no borrow checker and no data-race protection.</td></tr>
+<tr><th scope="row">Rust</th><td>0.90</td><td>0.95</td><td>0.80</td><td>manual</td><td>Alone in rejecting data races at compile time without a GC. Not 1.0: unsafe exists, and logic bugs remain.</td></tr>
+<tr><th scope="row">Go</th><td>0.45</td><td>0.60</td><td>0.20</td><td>garbage collected</td><td>Memory safe and famously cheap to learn, but data races are possible and easy to write.</td></tr>
+<tr><th scope="row">C#</th><td>0.35</td><td>0.70</td><td>0.30</td><td>garbage collected</td><td>More control than its reputation (structs, Span<T>, stackalloc); nullable refs closed a real hole.</td></tr>
+<tr><th scope="row">JS</th><td>0.10</td><td>0.45</td><td>0.15</td><td>garbage collected</td><td>Safe from crashes, unsafe from nonsense: no data races because there are no threads to race.</td></tr>
+<tr><th scope="row">Python</th><td>0.03</td><td>0.50</td><td>0.10</td><td>garbage collected</td><td>Cheapest to start; the type system asks nothing of you and catches nothing for you.</td></tr>
+</tbody>
+</table>
