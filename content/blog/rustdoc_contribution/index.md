@@ -1,7 +1,7 @@
 +++
 title = "Rustdoc: F*** it I'm helping."
 description = "Who else?"
-date = 2026-05-23T19:33:19+00:00
+date = 2026-08-23T19:33:19+00:00
 updated = 2026-08-28T12:00:00+00:00
 draft = false
 template = "blog/page.html"
