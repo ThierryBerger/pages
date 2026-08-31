@@ -120,7 +120,7 @@ Our change is specific to rustdoc, so we want to find [**doc** attributes](https
 
 ## #[doc(...)]
 
-By searching for something we now is a **doc** attribute (but specific: e.g. `html_favicon_url`), we'll quickly find 
+By searching for something we know is a **doc** attribute (but specific: e.g. `html_favicon_url`), we'll quickly find 
 `rustc_attr_parsing::context::ATTRIBUTE_PARSERS`.
 
 a.k.a: a "big ass list".
@@ -197,7 +197,7 @@ Oh and when you modify something, look at its doc, it's full of "if you modify t
 // If you change this, please modify `src/doc/unstable-book` as well.
 ```
 
-That's another repository!
+~~That's another repository!~~ *I thought so, but it actually isn't*.
 
 <!-- TODO: do unstable book update there, I'm on a train, I can't now. -->
 
@@ -213,7 +213,7 @@ Rust-analyzer has some bindings for `notable_trait`. Of course, IDE integration!
 
 It's neat to have everything in 1 repository: it helps understanding all the implications of 1 feature. Let's stay focused on our intended feature for now, but keep this in mind (in tracking issue) for a follow up PR, maybe YOU will want to implement it?
 
-Seaking of "developer experience", I have that message:
+Seeking of "developer experience", I have that message:
 
 ```
 WARNING: you have not made a `bootstrap.toml`
