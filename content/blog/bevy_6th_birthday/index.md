@@ -88,4 +88,6 @@ Get in touch, really. I want to know what you're building, let's bring people to
 <br />
 <br />
 
-[I have a sponsor page ❤️](https://github.com/sponsors/ThierryBerger)
+- [Linkedin](https://www.linkedin.com/in/thierry-berger-614aa79a/)
+- [Mastodon](https://mastodon.gamedev.place/@Vrixyz)
+- [BlueSky](https://bsky.app/profile/thierryberger.bsky.social)
