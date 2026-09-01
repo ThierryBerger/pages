@@ -12,6 +12,34 @@ lead = "Happy Bevybirthday!"
 
 This post is an answer to [Bevy's 6th birthday post](https://bevy.org/news/bevys-sixth-birthday/), I missed out last year, so let this be a 2 year recap!
 
+<div class="bevy-fly"><img src="./bevy_6.svg" alt="home made simplistic svg of a bevy bird disguised as a 6" width="100" /></div>
+
+<style>
+.bevy-fly {
+  position: fixed;
+  top: 25vh;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+  animation: bevy-fly 22s linear infinite;
+}
+.bevy-fly img {
+  margin: 0;
+  animation: bevy-bob 3s ease-in-out infinite;
+}
+@keyframes bevy-fly {
+  from { transform: translateX(-30vw); }
+  to { transform: translateX(130vw); }
+}
+@keyframes bevy-bob {
+  50% { transform: translateY(-14px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bevy-fly { position: static; animation: none; }
+  .bevy-fly img { animation: none; }
+}
+</style>
+
 ## A bit about me and Bevy
 
 I'm an established freelance now! Mostly Rust, some teaching, tech events, and helping local businesses when I can be useful.
